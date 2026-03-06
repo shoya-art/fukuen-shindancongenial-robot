@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたの復縁可能性診断</title>
+    <!-- キャッシュ回避のためにパラメータ追加 -->
+    <link rel="stylesheet" href="style.css?v=2">
+    <!-- Google Fonts: Zen Maru Gothic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="hero-image-container">
+                <img src="images/couple_reconciliation_illustration.png" alt="あなたの復縁可能性診断" class="hero-photo">
+            </div>
+            <div class="title-container">
+                <p class="title-prefix">あなたの</p>
+                <h1 class="main-title highlight">復縁可能性診断</h1>
+                <p class="title-suffix">〜復縁するためにやるべきこと〜</p>
+            </div>
+
+            <p class="description">
+                あなたが復縁できない本当の理由は？<br>
+                たった1分、7つの質問に答えるだけで<br>
+                可能性とこれからやるべきことがわかります。<br><br>
+                <span
+                    style="font-size: 0.9rem; color: #ff8e9b; font-weight: bold;">※最も正確な診断結果になりますので、<br>あまり悩まず「直感」で選んでください。</span>
+            </p>
+            <button id="start-btn" class="primary-btn">診断をスタートする</button>
+        </section>
+
+        <!-- Question Screen -->
+        <section id="question-screen" class="screen">
+            <div class="progress-wrapper">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="question-header">
+                <span class="q-label">Q<span id="q-num">1</span>.</span>
+            </div>
+            <h2 id="question-text" class="question-text">質問テキスト</h2>
+            <div id="options-container" class="options-container">
+                <!-- Options will be injected here -->
+            </div>
+        </section>
+
+        <!-- Loading Screen -->
+        <section id="loading-screen" class="screen">
+            <div class="loader"></div>
+            <p class="loading-text">あなたに一番合った復縁方法を分析中...</p>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="result-screen" class="screen">
+            <h2 class="result-label">あなたの診断結果は...</h2>
+
+            <!-- 1つ目の枠：現状分析 -->
+            <div class="result-card">
+                <h3 id="result-title" class="result-title">結果タイトル</h3>
+                <div class="result-ill-wrapper">
+                    <img id="result-img" src="" alt="診断結果イメージ" class="result-illustration">
+                </div>
+                <p id="result-desc" class="result-desc">結果の説明</p>
+            </div>
+
+            <!-- 2つ目の枠：一番必要なこと（旧CTAの代わり） -->
+            <div class="advice-section">
+                <p id="result-advice" class="advice-text">
+                    ここにアドバイスが表示されます
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
