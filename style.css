@@ -208,23 +208,22 @@ body {
     padding: 1rem 0.5rem;
     /* 上下左右の余白をさらに縮小 */
     border-radius: 12px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     /* 基本サイズを小さくして見切れ防止 */
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: inherit;
-    line-height: 1.3;
+    line-height: 1.4;
     position: relative;
     overflow: hidden;
-    word-break: keep-all;
-    /* 単語の途中で改行させない */
+    /* word-break: keep-all; を削除して自然な折り返しを許可 */
 }
 
 /* スマホのさらに小さい画面向けにフォントサイズを調整 */
 @media screen and (max-width: 380px) {
     .option-btn {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         padding: 0.9rem 0.3rem;
     }
 }

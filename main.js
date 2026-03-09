@@ -1,6 +1,6 @@
 const questions = [
     {
-        q: "彼と別れてから、どのくらい経ちますか？",
+        q: "彼と別れてから、<br>どのくらい経ちますか？",
         options: [
             { text: "1ヶ月未満", type: "C" },
             { text: "1ヶ月〜3ヶ月", type: "C" },
@@ -9,7 +9,7 @@ const questions = [
         ]
     },
     {
-        q: "今、彼との連絡はどのような状態ですか？",
+        q: "今、彼との連絡は<br>どのような状態ですか？",
         options: [
             { text: "普通にLINEや電話ができるし、会えている", type: "A" },
             { text: "業務連絡や特定の用事があれば返信は来る", type: "A" },
@@ -94,6 +94,7 @@ const results = {
 let currentQuestion = 0;
 let scores = { A: 0, B: 0, C: 0, D: 0 };
 let userAnswers = []; // 各質問で選んだテキストを保存する配列
+let userTypes = []; // 各質問で選んだタイプを保存する配列
 
 const dom = {
     startScreen: document.getElementById('start-screen'),
@@ -108,11 +109,27 @@ const dom = {
     resultTitle: document.getElementById('result-title'),
     resultImg: document.getElementById('result-img'),
     resultDesc: document.getElementById('result-desc'),
-    resultAdvice: document.getElementById('result-advice')
+    resultAdvice: document.getElementById('result-advice'),
+    backBtn: document.getElementById('back-btn'),
+    closeBtn: document.getElementById('close-btn')
 };
 
 function init() {
     dom.startBtn.addEventListener('click', startQuiz);
+    if (dom.backBtn) dom.backBtn.addEventListener('click', goBack);
+    if (dom.closeBtn) dom.closeBtn.addEventListener('click', () => { window.close(); });
+}
+
+function goBack() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        const lastType = userTypes.pop();
+        if (scores[lastType] !== undefined) {
+            scores[lastType]--;
+        }
+        userAnswers.pop();
+        renderQuestion();
+    }
 }
 
 function showScreen(screen) {
@@ -126,11 +143,15 @@ function startQuiz() {
     currentQuestion = 0;
     scores = { A: 0, B: 0, C: 0, D: 0 };
     userAnswers = [];
+    userTypes = [];
     renderQuestion();
     showScreen(dom.questionScreen);
 }
 
 function renderQuestion() {
+    if (dom.backBtn) {
+        dom.backBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
+    }
     const q = questions[currentQuestion];
     dom.qNum.textContent = currentQuestion + 1;
     dom.qText.innerHTML = q.q;
@@ -162,6 +183,7 @@ function handleAnswer(type, text) {
 
     // 選んだ回答テキストを保存
     userAnswers.push(text);
+    userTypes.push(type);
 
     currentQuestion++;
 
