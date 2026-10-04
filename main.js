@@ -265,6 +265,7 @@ const dom = {
     resultKeyword: document.getElementById('result-keyword'),
     copyKeywordBtn: document.getElementById('copy-keyword-btn'),
     copyStatus: document.getElementById('copy-status'),
+    followupName: document.getElementById('followup-name'),
     backBtn: document.getElementById('back-btn'),
     closeBtn: document.getElementById('close-btn')
 };
@@ -465,6 +466,7 @@ function showResult() {
         dom.keywordHeading.textContent = keyword.heading;
         dom.keywordCopy.textContent = keyword.copy;
         dom.resultKeyword.textContent = keyword.keyword;
+        dom.followupName.textContent = profile.name;
         dom.keywordSection.hidden = false;
     } else {
         dom.keywordSection.hidden = true;
