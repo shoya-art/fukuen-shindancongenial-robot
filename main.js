@@ -464,7 +464,11 @@ function showResult() {
     if (finalDiagnosis.canReceivePersonalReply) {
         const keyword = keywordContent[finalDiagnosis.consultRank];
         dom.keywordHeading.textContent = keyword.heading;
-        dom.keywordCopy.textContent = keyword.copy;
+        dom.keywordCopy.replaceChildren(
+            document.createTextNode(`${profile.name}さんの回答を僕が直接確認して`),
+            document.createElement('br'),
+            document.createTextNode('ここからの動きを僕も一緒に考えます。')
+        );
         dom.resultKeyword.textContent = keyword.keyword;
         dom.followupName.textContent = profile.name;
         dom.keywordSection.hidden = false;

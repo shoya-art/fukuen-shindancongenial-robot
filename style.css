@@ -646,8 +646,6 @@ body {
 .manual-followup-note small {
     display: block;
     margin-top: 0.9rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid #f3dfe2;
     color: #9a626a;
     font-size: 0.72rem;
     line-height: 1.75;
